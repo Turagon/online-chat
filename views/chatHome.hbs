@@ -1,0 +1,26 @@
+<form action="/chat" method="POST" class="chat-select-form">
+  <label for="username">Username</label>
+  <div class="form-control">
+    <input type="text" name="username" id="username" placeholder="Enter username..." required />
+  </div>
+  <label for="room-selected">Select Room</label>
+  <div class="form-control">
+    <select name="room-selected" id="room-selected">
+      {{#each rooms}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit" class="btn">Join Chat</button>
+</form>
+<form action="/chat" method="POST" class="chat-select-form">
+  <label for="username">Username</label>
+  <div class="form-control">
+    <input type="text" name="username" id="username" placeholder="Enter username..." required />
+  </div>
+  <label for="create-room">Create Room</label>
+  <div class="form-control">
+    <input type="text" name="room" id="create-room" placeholder="Enter room name..." />
+  </div>
+  <button type="submit" class="btn">Create Chat</button>
+</form>
