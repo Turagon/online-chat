@@ -7,6 +7,8 @@ const passport = require('passport')
 const socket = require('socket.io')
 const routes = require('./routes')
 const PORT = process.env.PORT || 3000
+require('./config/mongoose')
+require('./config/passport')(passport)
 
 const app = express()
 
@@ -14,7 +16,7 @@ app.engine('hbs', exphbs({defaultLayout: 'main', extname: 'hbs'}))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(routes)
+
 
 // express-session
 app.use(session({
@@ -35,6 +37,7 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(routes)
 const server = app.listen(PORT, () => {
   console.log('server is on')
 })
