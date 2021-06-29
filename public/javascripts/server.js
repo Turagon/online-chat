@@ -27,8 +27,8 @@ function socketConnection (io) {
     socket.on('chatMessage', msg => {
       const curUser = getCurrentUser(socket.id)
       socket.broadcast
-      .to(user.room)
-      .emit('message', formatMessage(user.username, msg))
+        .to(curUser.room)
+        .emit('message', formatMessage(curUser.username, msg))
     })
   })
 }
