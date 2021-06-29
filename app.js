@@ -6,6 +6,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const socket = require('socket.io')
 const routes = require('./routes')
+const socketConnection = require('./public/javascripts/server')
 const PORT = process.env.PORT || 3000
 require('./config/mongoose')
 require('./config/passport')(passport)
@@ -43,3 +44,4 @@ const server = app.listen(PORT, () => {
 })
 
 const io = socket(server)
+socketConnection(io)

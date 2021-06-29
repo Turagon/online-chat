@@ -6,7 +6,13 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  res.render('chatroom', { title: 'Chat Room', layout: 'chatroomFrame' })
+  const username = req.body.username
+  const room = req.body.room
+  res.redirect(`/chat/chatroom/?username=${username}&room=${room}`)
+})
+
+router.get('/chatroom/?', (req, res) => {
+  res.render('chatroom', {title: 'ChatRoom', layout: 'chatroomFrame'})
 })
 
 module.exports = router
