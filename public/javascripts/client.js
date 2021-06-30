@@ -14,8 +14,6 @@ socket.emit('joinRoom', { username, room });
 // listen to message message
 socket.on('message', (message) => {
   inbondMsg(message)
-
-  // auto scroll down 注意DOM要吻合
   chatBox.scrollTop = chatBox.scrollHeight
 })
 
@@ -31,7 +29,6 @@ socket.on('roomInfo', ({room, users}) => {
     </div>
   </div>`
   displayUsers(users)
-  roomUsers.scrollTop = roomUsers.scrollHeight
 
   // user離開 放這邊是避免async race
   const leaveBTN = document.querySelector('.leave-chat')
@@ -52,6 +49,7 @@ submitBTN.addEventListener('click', event => {
   } else {
     socket.emit('chatMessage', msg)
     outbondMsg(msg)
+    chatBox.scrollTop = chatBox.scrollHeight
     event.target.parentNode.firstElementChild.value = ''
     event.target.parentNode.firstElementChild.focus()
   }
@@ -73,6 +71,7 @@ function inbondMsg(message) {
   chatSubBox.appendChild(chatTitle)
   chatSubBox.appendChild(chatContent)
   chatbox.appendChild(chatSubBox)
+  chatSubBox.scrollTop = chatSubBox.scrollHeight
 }
 
 // 產生outbond的對話框
@@ -90,6 +89,7 @@ function outbondMsg(message) {
   chatSubBox.appendChild(chatTitle)
   chatSubBox.appendChild(chatContent)
   chatbox.appendChild(chatSubBox)
+  chatSubBox.scrollTop = chatSubBox.scrollHeight
 }
 
 // 產生用戶列表

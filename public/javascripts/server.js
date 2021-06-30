@@ -1,5 +1,4 @@
 const { joinRoom, formatMessage, getRoomUsers, getCurrentUser, getLeavingUser } = require('./usersAndMessages')
-let roomInfo = []
 const chatMaster = 'T-Rex'
 
 function socketConnection (io) {

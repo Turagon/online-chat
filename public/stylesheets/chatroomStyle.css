@@ -69,7 +69,8 @@
 
 .chat-box {
   width: 70%;
-  background-color: rgba(144, 238, 144, 0.3);
+  background-color: white;
+  overflow-y: scroll;
 }
 
 .inbond-msg {
