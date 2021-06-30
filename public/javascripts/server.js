@@ -1,4 +1,5 @@
-const {joinRoom, formatMessage, getRoomUsers, getCurrentUser} = require('./usersAndMessages')
+const { joinRoom, formatMessage, getRoomUsers, getCurrentUser, getLeavingUser } = require('./usersAndMessages')
+let roomInfo = []
 const chatMaster = 'T-Rex'
 
 function socketConnection (io) {
@@ -29,6 +30,21 @@ function socketConnection (io) {
       socket.broadcast
         .to(curUser.room)
         .emit('message', formatMessage(curUser.username, msg))
+    })
+
+    // user離線
+    socket.on('disconnect', () => {
+      const user = getLeavingUser(socket.id)
+      if (user) {
+        io.to(user[0].room)
+        .emit('message', formatMessage(chatMaster, `${user[0].username} has left ${user[0].room}`))
+
+        io.to(user[0].room)
+        .emit('roomInfo', {
+          room: user[0].room,
+          users: getRoomUsers(user[0].room)
+        })
+      }
     })
   })
 }

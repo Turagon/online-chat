@@ -1,0 +1,151 @@
+/* chatroomFrame.hbs */
+.chatroom {
+  width: 50%;
+  margin: 5px auto;
+  padding: 10px;
+}
+
+.chat-head {
+  height: 50px;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 50px;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  background-color: chocolate;
+  color: aliceblue;
+}
+
+.chat-head i {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.chatroom-name {
+  width: 100%;
+}
+
+.roomName {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: lightsalmon;
+  text-align: center;
+  font-size: 28px;
+  color: firebrick;
+  font-weight: bolder;
+}
+
+.roomName i {
+  margin-right: 10px;
+}
+
+.chat-room-info {
+  display: flex;
+  height: 350px;
+}
+
+.leave-chat {
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bolder;
+  height: 40px;
+  background-color: red;
+  border: none;
+  color: aliceblue;
+}
+
+.leave-chat i {
+  margin-right: 10px
+}
+
+.chat-users {
+  width: 30%;
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.chat-box {
+  width: 70%;
+  background-color: rgba(144, 238, 144, 0.3);
+}
+
+.inbond-msg {
+  width: 60%;
+}
+
+.outbond-msg {
+  width: 60%;
+  margin-left: 40%;
+}
+
+.chatTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  padding-left: 3px;
+  font-size: 6px;
+  text-align: end;
+}
+
+.outbond-chatTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  padding-left: 3px;
+  font-size: 6px;
+  text-align: end;
+}
+
+.chatContent {
+  margin-bottom: 12px;
+  padding-left: 3px;
+  font-size: 12px;
+  background-color: rgba(124, 200, 124, 0.4);
+  border-radius: 0 5px 5px 0;
+}
+
+.outbond-chatContent {
+  margin-bottom: 12px;
+  padding-left: 3px;
+  font-size: 12px;
+  background-color: rgba(17,182,253, 0.4);
+  border-radius: 5px 0 0 5px;
+}
+
+.user-list {
+  padding-left: 5px;
+  font-size: 12px;
+  color: darkgray;
+  font-weight: bolder;
+  margin: 5px 0 2px 0;
+}
+
+.chat-submit {
+  width: 100%;
+  padding: 3px;
+  border-radius: 0 0 10px 10px;
+  background-color: rgba(210, 105, 30, 0.2);
+}
+
+.chat-submit input {
+  border: none;
+  border-radius: 0 0 0 10px;
+  width: 80%;
+  padding-left: 5px;
+}
+
+.chat-submit button {
+  border: none;
+  border-radius: 0 0 10px 0;
+  width: 19%;
+  background-color: royalblue;
+  color: aliceblue;
+  font-weight: bolder;
+}
+
+.chat-submit button i {
+  margin-right: 5px;
+}

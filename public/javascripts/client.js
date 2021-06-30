@@ -21,8 +21,26 @@ socket.on('message', (message) => {
 
 // listen to room and user update
 socket.on('roomInfo', ({room, users}) => {
-  roomName.innerText = room
+  roomName.innerHTML = `
+  <div class="room-title">
+    <div class="roomName">
+      <i class="fas fa-broadcast-tower"></i>${room}
+    </div>
+    <div class="leaveButton>">
+      <button class="leave-chat"><i class="fas fa-shoe-prints"></i>Leave</button>
+    </div>
+  </div>`
   displayUsers(users)
+  roomUsers.scrollTop = roomUsers.scrollHeight
+
+  // user離開 放這邊是避免async race
+  const leaveBTN = document.querySelector('.leave-chat')
+  leaveBTN.addEventListener('click', event => {
+    const confirmLeave = confirm('Are you sure?');
+    if (confirmLeave) {
+      window.location = '/chat';
+    }
+  })
 })
 
 // send out message 注意msg的取得跟檢查 因為server端只用broadcast 所以client要create一個對話
@@ -48,7 +66,7 @@ function inbondMsg(message) {
   const chatTitle = document.createElement('p')
   chatTitle.classList.add('chatTitle')
   const date = new Date(message.time + 8 * 3600 * 1000).toJSON().substr(0, 19).replace('T', ' ')
-  chatTitle.innerHTML = `<span>${message.username} say:</span><span>${date}</span>`
+  chatTitle.innerHTML = `<span>${message.username} say :</span><span>${date}</span>`
   const chatContent = document.createElement('p')
   chatContent.classList.add('chatContent')
   chatContent.innerText = message.text
@@ -63,11 +81,11 @@ function outbondMsg(message) {
   const chatSubBox = document.createElement('div')
   chatSubBox.classList.add('outbond-msg')
   const chatTitle = document.createElement('p')
-  chatTitle.classList.add('chatTitle')
+  chatTitle.classList.add('outbond-chatTitle')
   const date = new Date(Date.now() + 8 * 3600 * 1000).toJSON().substr(0, 19).replace('T', ' ')
   chatTitle.innerHTML = `<span>${date}</span>`
   const chatContent = document.createElement('p')
-  chatContent.classList.add('chatContent')
+  chatContent.classList.add('outbond-chatContent')
   chatContent.innerText = message
   chatSubBox.appendChild(chatTitle)
   chatSubBox.appendChild(chatContent)

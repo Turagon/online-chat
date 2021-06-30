@@ -22,4 +22,12 @@ function getCurrentUser(id) {
   return users.find(user => user.id === id);
 }
 
-module.exports = {joinRoom, formatMessage, getRoomUsers, getCurrentUser}
+function getLeavingUser(id) {
+  const index = users.findIndex(item => item.id === id)
+  if (index !== -1) {
+    return users.splice(index, 1)
+  }
+}
+
+
+module.exports = { joinRoom, formatMessage, getRoomUsers, getCurrentUser, getLeavingUser }
